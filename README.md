@@ -10,7 +10,13 @@ Reordering your preferences takes _forever_ if you drag it one-by-one. The follo
 
 Each assignment has a position number. You can see the position number when you search for billets or when you are reordering your preferences.
 
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/520f7a3122d4248dcff737394f27234024e94a0c/images/position_numbers_1.png?raw=true" width="350">
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/520f7a3122d4248dcff737394f27234024e94a0c/images/position_numbers_2.png?raw=true" width="350">
+
+<br/><br/>
 I recommend using a spreadsheet to get your position numbers in order. To download all of the avaiable assignments as a spreadsheet, use the "Export To Excel" button the "Search Billets" page.
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/520f7a3122d4248dcff737394f27234024e94a0c/images/export_to_excel.png?raw=true">
 
 ## Step 2: Format the position numbers
 
@@ -29,7 +35,7 @@ NOTE: your position numbers must be in order. The script will rank the first pos
 Running the script consists of 6 steps (all very easy I promise):
 
 1. Open the "Update Assignment Preferences" page on Talent Marketplace (**HIGHLY** recommend using Chrome - I have only tested this in Chrome)
-2. Right click anywhere on the page, and click "Inspect"
+2. Right click anywhere on the page, and click "Inspect" (a new window will appear)
 3. In the top row of buttons, click "Console"
 4. Copy the below code into the console window, DON'T click enter yet
 
