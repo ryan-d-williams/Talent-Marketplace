@@ -1,2 +1,41 @@
 # Talent-Marketplace
+
 Collection of scripts to automate talent marketplace operations
+
+# Reorder your preferences
+
+Reordering your preferences takes _forever_ if you drag it one-by-one. The following steps allow you to reorder them all at once
+
+## Step 1: Get your position numbers in order
+
+Each assignment has a position number. You can see the position number when you search for billets or when you are reordering your preferences.
+
+I recommend using a spreadsheet to get your position numbers in order. To download all of the avaiable assignments as a spreadsheet, use the "Export To Excel" button the "Search Billets" page.
+
+## Step 2: Format the position numbers
+
+The position numbers must be formatted with:
+
+- Quotes around each position number (ex: "7769ABC")
+- A comma separating each position number (ex: "7769ABC", "1234XYZ")
+- Brackets around the first and last position number (ex: ["7769ABC", "1234XYZ", "7890RDW"])
+
+You can also use the "FormatPositionNumbers.xlsx" spreadsheet to do this for you. Just paste your ordered position numbers in the first column, and you can copy the formatted text from the third column.
+
+NOTE: your position numbers must be in order. The script will rank the first position number as #1 in your preference list.
+
+## Step 3: Run the script with your position numbers
+
+Running the script consists of 6 steps (all very easy I promise):
+
+1. Open the "Update Assignment Preferences" page on Talent Marketplace (**HIGHLY** recommend using Chrome - I have only tested this in Chrome)
+2. Right click anywhere on the page, and click "Inspect"
+3. In the top row of buttons, click "Console"
+4. Copy the below code into the console window, DON'T click enter yet
+
+5. Change PASTE_YOUR_FORMATTED_POSITION_NUMBERS_HERE to your formatted position numbers (line 2 of the code)
+6. Click enter
+
+You should now see text appear in the console to let you know how things are going (errors will appear with the description of what went wrong)
+
+When it is done ("Done!" appears), refresh to see the changes
