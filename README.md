@@ -6,7 +6,7 @@ Collection of scripts to automate talent marketplace operations
 
 Reordering your preferences takes _forever_ if you drag it one-by-one. The following steps allow you to reorder them all at once
 
-NOTE: this script assumes you have already favorited all of the assignments you want ordered
+**NOTE: this script assumes you have already favorited all of the assignments you want ordered**
 
 ## Step 1: Get your position numbers in order
 
@@ -22,11 +22,12 @@ I recommend using a spreadsheet to get your position numbers in order. To downlo
 
 ## Step 2: Format the position numbers
 
-The position numbers must be formatted with:
+The position numbers must be formatted in preference order with:
 
 - Quotes around each position number (ex: "7769ABC")
 - A comma separating each position number (ex: "7769ABC", "1234XYZ")
 - Brackets around the first and last position number (ex: ["7769ABC", "1234XYZ", "7890RDW"])
+- The highest preference (#1 preference) as the first number in the list
 
 You can also use the [FormatPositionNumbers.xlsx](https://github.com/ryan-d-williams/Talent-Marketplace/raw/master/FormatPositionNumbers.xlsx) spreadsheet to do this for you. Just paste your ordered position numbers in the first column, and you can copy the formatted text from the third column.
 
@@ -46,7 +47,7 @@ Running the script consists of 6 steps (all very easy I promise):
 3. In the top row of buttons, click "Console"
 4. Copy the below code into the console window, DON'T click enter yet
 
-<details><summary>Click to unhide code</summary>
+<details><summary>CLICK HERE TO UNHIDE CODE</summary>
 
 ```javascript
 (() => {
