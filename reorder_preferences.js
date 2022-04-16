@@ -58,7 +58,7 @@
         }
     });
 
-    $.when(...all_promises).done(() => {
+    $.when(...all_promises).always(() => {
         console.log("\n\nDone!");
         console.log(`Successfully reordered ${success_count} assignments with ${unchanged_count} assignments already in the correct order`);
         console.log(`Total number that failed to reorder: ${error_count}`);

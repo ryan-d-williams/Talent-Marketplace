@@ -145,3 +145,5 @@ Running the script consists of 6 steps (all very easy I promise):
 You should now see text appear in the console to let you know how things are going (errors will appear with the description of what went wrong)
 
 When it is done ("Done!" appears), refresh to see the changes
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/done.png?raw=true">
