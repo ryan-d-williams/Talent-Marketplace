@@ -10,13 +10,13 @@ Reordering your preferences takes _forever_ if you drag it one-by-one. The follo
 
 Each assignment has a position number. You can see the position number when you search for billets or when you are reordering your preferences.
 
-<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/520f7a3122d4248dcff737394f27234024e94a0c/images/position_numbers_1.png?raw=true" width="350">
-<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/520f7a3122d4248dcff737394f27234024e94a0c/images/position_numbers_2.png?raw=true" width="350">
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/position_numbers_1.png?raw=true" width="350">
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/position_numbers_2.png?raw=true" width="350">
 
 <br/><br/>
 I recommend using a spreadsheet to get your position numbers in order. To download all of the avaiable assignments as a spreadsheet, use the "Export To Excel" button the "Search Billets" page.
 
-<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/520f7a3122d4248dcff737394f27234024e94a0c/images/export_to_excel.png?raw=true">
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/export_to_excel.png?raw=true">
 
 ## Step 2: Format the position numbers
 
@@ -28,6 +28,8 @@ The position numbers must be formatted with:
 
 You can also use the "FormatPositionNumbers.xlsx" spreadsheet to do this for you. Just paste your ordered position numbers in the first column, and you can copy the formatted text from the third column.
 
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/format_pos_nums_spreadsheet.png?raw=true">
+
 NOTE: your position numbers must be in order. The script will rank the first position number as #1 in your preference list.
 
 ## Step 3: Run the script with your position numbers
@@ -36,10 +38,16 @@ Running the script consists of 6 steps (all very easy I promise):
 
 1. Open the "Update Assignment Preferences" page on Talent Marketplace (**HIGHLY** recommend using Chrome - I have only tested this in Chrome)
 2. Right click anywhere on the page, and click "Inspect" (a new window will appear)
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/inspect.png?raw=true">
+
 3. In the top row of buttons, click "Console"
 4. Copy the below code into the console window, DON'T click enter yet
 
 5. Change PASTE_YOUR_FORMATTED_POSITION_NUMBERS_HERE to your formatted position numbers (line 2 of the code)
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/code_paste.png?raw=true">
+
 6. Click enter
 
 You should now see text appear in the console to let you know how things are going (errors will appear with the description of what went wrong)
