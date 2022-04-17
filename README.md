@@ -6,7 +6,7 @@ Collection of scripts to automate talent marketplace operations
 
 Reordering your preferences takes _forever_ if you drag it one-by-one. The following steps allow you to reorder them all at once
 
-**NOTE: this script assumes you have already favorited all of the assignments you want ordered**
+### **NOTE: this script assumes you have already favorited all of the assignments you want ordered**
 
 ## Step 1: Get your position numbers in order
 
@@ -72,6 +72,12 @@ Running the script consists of 6 steps (all very easy I promise):
       (assignment) => assignment.AirForcePositionNumber === pos_num
     );
     if (assignment) {
+      let position_ids = JSON.parse(JSON.stringify(assignment.PositionIds));
+      let order = BidsAndPrefsOrderModule.GetOrderNumberAsDecimal(
+        ndx,
+        all_weights
+      );
+
       if (VERBOSE) {
         console.log(`Position Number: ${pos_num}`);
         console.log(`Location: ${assignment.PositionLocation}`);
@@ -82,11 +88,6 @@ Running the script consists of 6 steps (all very easy I promise):
       }
 
       if (assignment.Order !== ndx + 1) {
-        let position_ids = JSON.parse(JSON.stringify(assignment.PositionIds));
-        let order = BidsAndPrefsOrderModule.GetOrderNumberAsDecimal(
-          ndx,
-          all_weights
-        );
         all_weights[ndx] = order;
 
         let deferred = $.post({
@@ -121,6 +122,7 @@ Running the script consists of 6 steps (all very easy I promise):
       console.log(
         `Error: could not find assignment for position number: ${pos_num}`
       );
+      error_count++;
     }
   });
 
@@ -144,6 +146,137 @@ Running the script consists of 6 steps (all very easy I promise):
 
 You should now see text appear in the console to let you know how things are going (errors will appear with the description of what went wrong)
 
-When it is done ("Done!" appears), refresh to see the changes
+When it is done ("Done!" appears), **refresh** to see the changes
 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/done.png?raw=true">
+
+# Favorite (and reorder) your preferences
+
+If you haven't already favorited your preferences and want to automate that too (and reorder them at the same time) then the following steps are for you
+
+### **NOTE: this script assumes you have NOT already favorited your assignments. If you have already favorited your assignments, see the section above for reordering only**
+
+## Step 1: Get your position numbers
+
+Each assignment has a position number. You can see the position number when you search for billets.
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/position_numbers_2.png?raw=true" width="350">
+
+<br/><br/>
+I recommend using a spreadsheet to get your position numbers in order. To download all of the avaiable assignments as a spreadsheet, use the "Export To Excel" button from the "Search Billets" page.
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/export_to_excel.png?raw=true">
+
+## Step 2: Format the position numbers
+
+The position numbers must be formatted in preference order with:
+
+- Quotes around each position number (ex: "7769ABC")
+- A comma separating each position number (ex: "7769ABC", "1234XYZ")
+- Brackets around the first and last position number (ex: ["7769ABC", "1234XYZ", "7890RDW"])
+- The highest preference (#1 preference) as the first number in the list
+  - If you don't put them in order, it will still favorite them as expected, but you will have to reorder them yourself or follow the previous section for how to reorder them.
+
+You can also use the [FormatPositionNumbers.xlsx](https://github.com/ryan-d-williams/Talent-Marketplace/raw/master/FormatPositionNumbers.xlsx) spreadsheet to do this for you. Just paste your ordered position numbers in the first column, and you can copy the formatted text from the third column.
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/format_pos_nums_spreadsheet.png?raw=true">
+
+NOTE: The script will rank the first position number as #1 in your preference list.
+
+## Step 3: Run the script with your position numbers
+
+Running the script consists of 6 steps (all very easy I promise):
+
+1. Open the "Update Assignment Preferences" page on Talent Marketplace (**HIGHLY** recommend using Chrome - I have only tested this in Chrome)
+2. Right click anywhere on the page, and click "Inspect" (a new window will appear)
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/inspect.png?raw=true">
+
+3. In the top row of buttons, click "Console"
+4. Copy the below code into the console window, DON'T click enter yet
+
+<details><summary>CLICK HERE TO UNHIDE CODE</summary>
+
+```javascript
+(() => {
+  const POS_NUMS = PASTE_YOUR_FORMATTED_POSITION_NUMBERS_HERE;
+
+  const VERBOSE = false;
+  let page_data = $("#searchGrid").data("kendoGrid");
+  let all_els = page_data.dataSource.data();
+
+  let first_el = all_els[0];
+  const VML_CYCLE_ID = first_el.VmlCycleId;
+  let all_promises = [];
+  let unchanged_count = 0,
+    success_count = 0,
+    error_count = 0;
+  POS_NUMS.forEach((pos_num) => {
+    let assignment = all_els.find(
+      (assignment) => assignment.AirForcePositionNumber === pos_num
+    );
+    if (assignment) {
+      if (VERBOSE) {
+        console.log(`Position Number: ${pos_num}`);
+        console.log(`Location: ${assignment.PositionLocation}`);
+      }
+
+      if (!assignment.IsFavorite) {
+        let position_ids = JSON.parse(JSON.stringify(assignment.PositionIds));
+
+        let deferred = $.post({
+          url: $("#talentMarketplaceSearchApp").data("update-favorite-url"),
+          cache: !1,
+          data: {
+            vmlCycleId: VML_CYCLE_ID,
+            positionIds: position_ids,
+            isFavored: false,
+            __RequestVerificationToken: $(
+              "#__AjaxAntiForgeryForm input[name=__RequestVerificationToken]"
+            ).val(),
+          },
+        })
+          .fail(function () {
+            error_count++;
+            console.log(`Error: there was a problem favoriting ${pos_num}`);
+          })
+          .done(function () {
+            success_count++;
+            console.log(`Successfully favorited ${pos_num}`);
+          });
+        all_promises.push(deferred);
+      } else {
+        unchanged_count++;
+        console.log(`${pos_num} is already favorited`);
+      }
+    } else {
+      console.log(
+        `Error: could not find assignment for position number: ${pos_num}`
+      );
+      error_count++;
+    }
+  });
+
+  $.when(...all_promises).always(() => {
+    console.log("\n\nDone!");
+    console.log(
+      `Successfully favorited ${success_count} assignments with ${unchanged_count} assignments already favorited`
+    );
+    console.log(`Total number that failed to favorite: ${error_count}`);
+  });
+})();
+```
+
+</details>
+
+5. Change PASTE_YOUR_FORMATTED_POSITION_NUMBERS_HERE to your formatted position numbers (line 2 of the code)
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/code_paste.png?raw=true">
+
+6. Click enter
+
+You should now see text appear in the console to let you know how things are going (errors will appear with the description of what went wrong)
+
+When it is done ("Done!" appears), **refresh** to see the changes
+
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/done2.png?raw=true">

@@ -16,6 +16,8 @@
     POS_NUMS.forEach((pos_num, ndx) => {
         let assignment = all_els.find(assignment => assignment.AirForcePositionNumber === pos_num);
         if (assignment) {
+            let position_ids = JSON.parse(JSON.stringify(assignment.PositionIds))
+            let order = BidsAndPrefsOrderModule.GetOrderNumberAsDecimal(ndx, all_weights);
 
             if (VERBOSE) {
                 console.log(`Position Number: ${pos_num}`)
@@ -27,8 +29,6 @@
             }
 
             if (assignment.Order !== ndx + 1) {
-                let position_ids = JSON.parse(JSON.stringify(assignment.PositionIds))
-                let order = BidsAndPrefsOrderModule.GetOrderNumberAsDecimal(ndx, all_weights);
                 all_weights[ndx] = order;
 
                 let deferred = $.post({
@@ -55,6 +55,7 @@
             }
         } else {
             console.log(`Error: could not find assignment for position number: ${pos_num}`);
+            error_count++;
         }
     });
 
