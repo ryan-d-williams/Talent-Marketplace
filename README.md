@@ -152,9 +152,11 @@ Running the script consists of 6 steps (all very easy I promise):
 
 6. Click enter
 
-You should now see text appear in the console to let you know how things are going (errors will appear with the description of what went wrong)
+You should now see text appear in the console to let you know how things are going (if there are problems, you will see "Error" with the description of what went wrong for that position number)
 
-When it is done ("Done!" appears), **refresh** to see the changes
+When it is done ("Done!" appears), **refresh** to see the changes.
+
+Questions? Check out the [FAQ](#faq)
 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/done.png?raw=true">
 
@@ -281,9 +283,11 @@ Running the script consists of 6 steps (all very easy I promise):
 
 6. Click enter
 
-You should now see text appear in the console to let you know how things are going (errors will appear with the description of what went wrong)
+You should now see text appear in the console to let you know how things are going (if there are problems, you will see "Error" with the description of what went wrong for that position number)
 
-When it is done ("Done!" appears), **refresh** to see the changes
+When it is done ("Done!" appears), **refresh** to see the changes.
+
+Questions? Check out the [FAQ](#faq)
 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/done2.png?raw=true">
 
