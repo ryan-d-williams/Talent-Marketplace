@@ -4,8 +4,10 @@ Collection of scripts to automate talent marketplace operations
 
 There are 2 scripts (as of right now).
 
-1. The first and most common is if you have already favorited your assignments and just want an automated way to reorder them. [Click here for those instructions](#reorder-your-preferences)
+1. The first (and most common) is if you have already favorited your assignments and just want an automated way to reorder them. [Click here for those instructions](#reorder-your-preferences)
 2. The second is if you haven't already favorited your assignments and want a script to both favorite them and put them in the right order. [Click here for those instructions](#favorite-and-reorder-your-preferences)
+
+Both should be able to be accomplished in just a few minutes (rather than a few hours of dragging and dropping)
 
 Want more automation? Add your request as an issue!
 
@@ -15,7 +17,7 @@ Want more automation? Add your request as an issue!
 
 Reordering your preferences takes _forever_ if you drag it one-by-one. The following steps allow you to reorder them all at once
 
-### **NOTE: this script assumes you have already favorited all of the assignments you want ordered**
+### **NOTE: this script assumes you have already favorited all of the assignments you want ordered. If you have not, see [this section](#favorite-and-reorder-your-preferences) for an automated way to favorite**
 
 ## Step 1: Get your position numbers in order
 
@@ -25,7 +27,7 @@ Each assignment has a position number. You can see the position number when you 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/position_numbers_2.png?raw=true" width="350">
 
 <br/><br/>
-I recommend using a spreadsheet to get your position numbers in order. To download all of the avaiable assignments as a spreadsheet, use the "Export To Excel" button from the "Search Billets" page.
+I recommend using a spreadsheet to get your position numbers in order. To download all of the available assignments as a spreadsheet, use the "Export To Excel" button from the "Search Billets" page.
 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/export_to_excel.png?raw=true">
 
@@ -38,7 +40,7 @@ The position numbers must be formatted in preference order with:
 - Brackets around the first and last position number (ex: ["7769ABC", "1234XYZ", "7890RDW"])
 - The highest preference (#1 preference) as the first number in the list
 
-You can also use the [FormatPositionNumbers.xlsx](https://github.com/ryan-d-williams/Talent-Marketplace/raw/master/FormatPositionNumbers.xlsx) spreadsheet to do this for you. Just paste your ordered position numbers in the first column, and you can copy the formatted text from the third column.
+(optional, but helpful) You can also use the [FormatPositionNumbers.xlsx](https://github.com/ryan-d-williams/Talent-Marketplace/raw/master/FormatPositionNumbers.xlsx) spreadsheet to do this for you. Just paste your ordered position numbers in the first column, and you can copy the formatted text from the third column.
 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/format_pos_nums_spreadsheet.png?raw=true">
 
@@ -160,7 +162,7 @@ When it is done ("Done!" appears), **refresh** to see the changes
 
 If you haven't already favorited your preferences and want to automate that too (and reorder them at the same time) then the following steps are for you
 
-### **NOTE: this script assumes you have NOT already favorited your assignments. If you have already favorited your assignments, see the section above for reordering only**
+### **NOTE: this script assumes you have NOT already favorited your assignments. If you have already favorited your assignments, see [the section above](#reorder-your-preferences) for reordering only**
 
 ## Step 1: Get your position numbers
 
@@ -169,7 +171,7 @@ Each assignment has a position number. You can see the position number when you 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/position_numbers_2.png?raw=true" width="350">
 
 <br/><br/>
-I recommend using a spreadsheet to get your position numbers in order. To download all of the avaiable assignments as a spreadsheet, use the "Export To Excel" button from the "Search Billets" page.
+I recommend using a spreadsheet to get your position numbers in order. To download all of the available assignments as a spreadsheet, use the "Export To Excel" button from the "Search Billets" page.
 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/export_to_excel.png?raw=true">
 
@@ -183,20 +185,20 @@ The position numbers must be formatted in preference order with:
 - The highest preference (#1 preference) as the first number in the list
   - If you don't put them in order, it will still favorite them as expected, but you will have to reorder them yourself or follow the previous section for how to reorder them.
 
-You can also use the [FormatPositionNumbers.xlsx](https://github.com/ryan-d-williams/Talent-Marketplace/raw/master/FormatPositionNumbers.xlsx) spreadsheet to do this for you. Just paste your ordered position numbers in the first column, and you can copy the formatted text from the third column.
+(optional, but helpful) You can also use the [FormatPositionNumbers.xlsx](https://github.com/ryan-d-williams/Talent-Marketplace/raw/master/FormatPositionNumbers.xlsx) spreadsheet to do this for you. Just paste your ordered position numbers in the first column, and you can copy the formatted text from the third column.
 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/format_pos_nums_spreadsheet.png?raw=true">
 
-NOTE: The script will rank the first position number as #1 in your preference list.
+NOTE: The order you have the position numbers in determines what order they will initially appear in your preferences.
 
 ## Step 3: Run the script with your position numbers
 
 Running the script consists of 6 steps (all very easy I promise):
 
-1. Open the "Update Assignment Preferences" page on Talent Marketplace (**HIGHLY** recommend using Chrome - I have only tested this in Chrome)
+1. Open the "Search Billets" page on Talent Marketplace (**HIGHLY** recommend using Chrome - I have only tested this in Chrome)
 2. Right click anywhere on the page, and click "Inspect" (a new window will appear)
 
-<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/inspect.png?raw=true">
+<img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/inspect2.png?raw=true">
 
 3. In the top row of buttons, click "Console"
 4. Copy the below code into the console window, DON'T click enter yet
@@ -289,12 +291,22 @@ When it is done ("Done!" appears), **refresh** to see the changes
 
 Q. Why?
 
-A. Talent Marketplace is slow. It takes an unacceptable amount of time to reorder assignment preferences. Thousands of people use this system every year. It's time to work smarter and not harder.
+A. Talent Marketplace is slow. It takes an unacceptable amount of time to reorder assignment preferences. Thousands of people use this system every year. The hope is this will help someone save a few hours of their life dragging and dropping.
+
+<br/><br/>
+Q. How long does this take?
+
+A. After determining what order you want your assignments in, this should only take you a few minutes to accomplish. Reordering themselves (usually) takes much, much longer.
 
 <br/><br/>
 Q. Why JQuery?
 
 A. The website by default uses JQuery, I'm just piggy-backing off what they are already using to make the script as minimal as possible.
+
+<br/><br/>
+Q. It says: Error: could not find assignment for position number. What do I do?
+
+A. That means if could not find an assignment matching that position number. Check the spelling of the position number, and make sure you haven't accidentally filtered anything out.
 
 <br/><br/>
 Q. Something went wrong, what do I do now?
