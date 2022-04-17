@@ -5,8 +5,6 @@
     let page_data = $("#searchGrid").data("kendoGrid");
     let all_els = page_data.dataSource.data();
 
-    let first_el = all_els[0];
-    const VML_CYCLE_ID = first_el.VmlCycleId;
     let all_promises = [];
     let unchanged_count = 0, success_count = 0, error_count = 0;
     POS_NUMS.forEach((pos_num) => {
@@ -25,7 +23,7 @@
                     url: $("#talentMarketplaceSearchApp").data("update-favorite-url"),
                     cache: !1,
                     data: {
-                        vmlCycleId: VML_CYCLE_ID,
+                        vmlCycleId: assignment.VmlCycleId,
                         positionIds: position_ids,
                         isFavored: false,
                         __RequestVerificationToken: $("#__AjaxAntiForgeryForm input[name=__RequestVerificationToken]").val()

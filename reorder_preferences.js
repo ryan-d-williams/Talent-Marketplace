@@ -3,20 +3,17 @@
 
     const VERBOSE = false;
     let page_data = $("#preferencesList").data("kendoListView");
-    let all_els = page_data.dataSource.data()
+    let all_els = page_data.dataSource.data();
     let all_weights = $.map(all_els, (n) => {
         return n.PreferenceOrder
     });
 
-    let first_el = all_els[0];
-    const VML_CYCLE_ID = first_el.VmlCycleId;
-    const PERSON_ID = first_el.PersonId;
     let all_promises = [];
     let unchanged_count = 0, success_count = 0, error_count = 0;
     POS_NUMS.forEach((pos_num, ndx) => {
         let assignment = all_els.find(assignment => assignment.AirForcePositionNumber === pos_num);
         if (assignment) {
-            let position_ids = JSON.parse(JSON.stringify(assignment.PositionIds))
+            let position_ids = JSON.parse(JSON.stringify(assignment.PositionIds));
             let order = BidsAndPrefsOrderModule.GetOrderNumberAsDecimal(ndx, all_weights);
 
             if (VERBOSE) {
@@ -35,8 +32,8 @@
                     url: $("#preferencesApp").data("update-preference-url"),
                     cache: !1,
                     data: {
-                        VmlCycleId: VML_CYCLE_ID,
-                        PersonId: PERSON_ID,
+                        VmlCycleId: assignment.VmlCycleId,
+                        PersonId: assignment.PersonId,
                         PositionIds: position_ids,
                         Order: order,
                         __RequestVerificationToken: $("#__AjaxAntiForgeryForm input[name=__RequestVerificationToken]").val()

@@ -2,6 +2,15 @@
 
 Collection of scripts to automate talent marketplace operations
 
+There are 2 scripts (as of right now).
+
+1. The first and most common is if you have already favorited your assignments and just want an automated way to reorder them. [Click here for those instructions](#reorder-your-preferences)
+2. The second is if you haven't already favorited your assignments and want a script to both favorite them and put them in the right order. [Click here for those instructions](#favorite-and-reorder-your-preferences)
+
+Want more automation? Add your request as an issue!
+
+[FAQ](#faq)
+
 # Reorder your preferences
 
 Reordering your preferences takes _forever_ if you drag it one-by-one. The following steps allow you to reorder them all at once
@@ -60,9 +69,6 @@ Running the script consists of 6 steps (all very easy I promise):
     return n.PreferenceOrder;
   });
 
-  let first_el = all_els[0];
-  const VML_CYCLE_ID = first_el.VmlCycleId;
-  const PERSON_ID = first_el.PersonId;
   let all_promises = [];
   let unchanged_count = 0,
     success_count = 0,
@@ -94,8 +100,8 @@ Running the script consists of 6 steps (all very easy I promise):
           url: $("#preferencesApp").data("update-preference-url"),
           cache: !1,
           data: {
-            VmlCycleId: VML_CYCLE_ID,
-            PersonId: PERSON_ID,
+            VmlCycleId: assignment.VmlCycleId,
+            PersonId: assignment.PersonId,
             PositionIds: position_ids,
             Order: order,
             __RequestVerificationToken: $(
@@ -205,8 +211,6 @@ Running the script consists of 6 steps (all very easy I promise):
   let page_data = $("#searchGrid").data("kendoGrid");
   let all_els = page_data.dataSource.data();
 
-  let first_el = all_els[0];
-  const VML_CYCLE_ID = first_el.VmlCycleId;
   let all_promises = [];
   let unchanged_count = 0,
     success_count = 0,
@@ -228,7 +232,7 @@ Running the script consists of 6 steps (all very easy I promise):
           url: $("#talentMarketplaceSearchApp").data("update-favorite-url"),
           cache: !1,
           data: {
-            vmlCycleId: VML_CYCLE_ID,
+            vmlCycleId: assignment.VmlCycleId,
             positionIds: position_ids,
             isFavored: false,
             __RequestVerificationToken: $(
@@ -280,3 +284,19 @@ You should now see text appear in the console to let you know how things are goi
 When it is done ("Done!" appears), **refresh** to see the changes
 
 <img src="https://github.com/ryan-d-williams/Talent-Marketplace/blob/master/images/done2.png?raw=true">
+
+# FAQ
+
+Q. Why?
+
+A. Talent Marketplace is slow. It takes an unacceptable amount of time to reorder assignment preferences. Thousands of people use this system every year. It's time to work smarter and not harder.
+
+<br/><br/>
+Q. Why JQuery?
+
+A. The website by default uses JQuery, I'm just piggy-backing off what they are already using to make the script as minimal as possible.
+
+<br/><br/>
+Q. Something went wrong, what do I do now?
+
+A. Open an issue in this repository and I'll help you debug.
