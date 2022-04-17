@@ -300,7 +300,7 @@ A. Talent Marketplace is slow. It takes an unacceptable amount of time to reorde
 <br/><br/>
 Q. How long does this take?
 
-A. After determining what order you want your assignments in, this should only take you a few minutes to accomplish. Reordering themselves (usually) takes much, much longer.
+A. After determining what order you want your assignments in, this should only take you a few minutes to accomplish. Reordering yourself (usually) takes much, much longer.
 
 <br/><br/>
 Q. Why JQuery?
